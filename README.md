@@ -58,3 +58,4 @@ Your stage should not use these slots, otherwise blinks would not work. Since th
 - Entity node graph `Player - Blink_Teleport` contains 4 instances of `Add Character Skill` node, referencing slots 12 and 13
 - Status node graph `Blink_Teleport_Unstuck` contains `Add Character Skill` and `Cast Skill From Specific Panel Slot` nodes, referencing slot 12
 - Client node graph `Blink_Teleport_Skill` at the very end contains `Cast Skill From Specific Slot` node, referencing slot 12
+- Status `Blink_Teleport_Caster` has the effect `Trigger Skill on Timer`, referencing Skill Slot 13 in the editor
