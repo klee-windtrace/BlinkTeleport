@@ -3,7 +3,7 @@
 
 Tired of purple loading screen on long-teleports? Annoyed by 1-sec delay between short-teleports? Frustrated with revival screen after drowning? Want to instantly teleport at any distances, revive in place and get rid of the loading screens for good!?
 
-### Download
+### Download (version 2)
 
 - Stage: [Blink_Teleport_Demo.gil](https://codeberg.org/klee_windtrace/BlinkTeleport/raw/branch/master/Blink_Teleport_Demo.gil)
 - Assets: [Blink_Teleport.gia](https://codeberg.org/klee_windtrace/BlinkTeleport/raw/branch/master/Blink_Teleport.gia)
@@ -18,7 +18,7 @@ Tired of purple loading screen on long-teleports? Annoyed by 1-sec delay between
 - Graceful detection of player loading – utilizing the same underlying skill casts as blinks
 
 ### Installation
-- `Player - Blink_Teleport`: mount on Player (has node graph vars)
+- `Player - Blink_Teleport`: mount on Player (has node graph variables)
 - `Character - Blink_Teleport`: mount on Character (or copy nodes)
 - `Singleton - Blink_Teleport`: mount on Stage (or any global entity)
 - Create `Blink_Teleport_Lib` variable on Player of type `3D Vector List`
@@ -33,29 +33,20 @@ Tired of purple loading screen on long-teleports? Annoyed by 1-sec delay between
 - `Is Character Down`: to know if a character has not yet revived
 
 ### BEWARE OF MILIASTRA BUGS:
-- Do not call `Revive Character` between `When the Character is Down` and `When All Player's Characters Are Down` events unless 6 seconds passed; make self-teleport after a revival
-- Do not apply Struggle to a downed character, do not long-teleport a downed player
-- Do not apply `Struggle` + `Cannot Recover HP` together
+- Do not call `Revive Character` between `When the Character is Down` and `When All Player's Characters Are Down` events
+- But if 6 seconds passed, do that by force (as this library does)
+- Do not apply Struggle to a downed character
+- Do not long-teleport a downed player
+- Make self-teleport after a revival
 
-## Important note after importing:
+## About skill slot 13:
 
-Go to `Combat Preset` → `Unit Status` → select `Blink_Teleport_Caster` → `Effect Details` tab → `Character Hidden` effect – make sure the filter is `Blink_Teleport_FALSE`
+This library manages a character skill assigned to `Slot 13` named `Blink_Teleport_Skill`
 
-In the same status, down below, find `Trigger Skill on Timer` effect – make sure its skill chosen is set to `Blink_Teleport_Skill`
+It does this by briefly binding it to the slot for `Trigger Skill on Timer` effect to work, and unbinding afterwards. This should restore anything you might also have bounded to Slot 13, without interfering.
 
-Select status `Blink_Teleport_Struggle`, in the same way for `Character Hidden` effect – make sure the filter is `Blink_Teleport_FALSE` again.
+However, if you want to change the slot number for blinks, do it in the following places:
+- Entity node graph `Player - Blink_Teleport` contains `Bind Custom Skill Instance to Specified Slot` node right on the first screen of graph view – select a different slot there
+- Status `Blink_Teleport_Caster` has the first effect `Trigger Skill on Timer`, referencing Custom Skill Slot 13 in the editor – select there the same chosen slot
 
-This is needed because Miliastra editor tends to mess up their references when importing assets.
-
-## About skill slots 12 and 13:
-
-This library manages two characters skills:
-- `Blink_Teleport_Interrupt` assigned to `Slot 12` (contains short animation to interrupt Struggle state gracefully)
-- `Blink_Teleport_Skill` assigned to `Slot 13` (contains client-side logic for blinks)
-
-Your stage should not use these slots, otherwise blinks would not work. Since there are 15 custom skill slots available for developers, you should either use other numbers than 12 and 13, or you will have to change their references in Blink Teleport node graphs. Here is where to find them:
-
-- Entity node graph `Player - Blink_Teleport` contains 4 instances of `Add Character Skill` node, referencing slots 12 and 13
-- Status node graph `Blink_Teleport_Unstuck` contains `Add Character Skill` and `Cast Skill From Specific Panel Slot` nodes, referencing slot 12
-- Client node graph `Blink_Teleport_Skill` at the very end contains `Cast Skill From Specific Slot` node, referencing slot 12
-- Status `Blink_Teleport_Caster` has the effect `Trigger Skill on Timer`, referencing Skill Slot 13 in the editor
+Nothing else references the slot number. Also, the library gracefully detects changes of player Class, reinstantiating its helper skills.
