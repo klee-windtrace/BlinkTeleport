@@ -3,7 +3,7 @@
 
 Tired of purple loading screen on long-teleports? Annoyed by 1-sec delay between short-teleports? Frustrated with revival screen after drowning? Want to instantly teleport at any distances, revive in place and get rid of the loading screens for good!?
 
-### Download (version 2)
+### Download (version 3)
 
 - Stage: [Blink_Teleport_Demo.gil](https://codeberg.org/klee_windtrace/BlinkTeleport/raw/branch/master/Blink_Teleport_Demo.gil)
 - Assets: [Blink_Teleport.gia](https://codeberg.org/klee_windtrace/BlinkTeleport/raw/branch/master/Blink_Teleport.gia)
