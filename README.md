@@ -5,8 +5,8 @@ Tired of purple loading screen on long-teleports? Annoyed by 1-sec delay between
 
 ### Download (version 4)
 
-- Stage: [Blink_Teleport_Demo.gil](https://codeberg.org/klee_windtrace/BlinkTeleport/raw/branch/master/Blink_Teleport_Demo.gil)
-- Asset: [Blink_Teleport.gia](https://codeberg.org/klee_windtrace/BlinkTeleport/raw/branch/master/Blink_Teleport.gia)
+- Stage: [Blink_Teleport_Demo.gil](https://codeberg.org/klee_windtrace/BlinkTeleport/raw/branch/master/Blink_Teleport_Demo.gil) | [mirror](https://github.com/klee-windtrace/BlinkTeleport/raw/refs/heads/master/Blink_Teleport_Demo.gil)
+- Asset: [Blink_Teleport.gia](https://codeberg.org/klee_windtrace/BlinkTeleport/raw/branch/master/Blink_Teleport.gia) | [mirror](https://github.com/klee-windtrace/BlinkTeleport/raw/refs/heads/master/Blink_Teleport.gia)
 - Resource Center page: https://act.hoyoverse.com/ys/prod/ugc/component-store/index.html#/item/2070859182399037440
 - Discord discussion thread: https://discord.com/channels/1163728255283642450/1520439768876318820/1520439768876318820
 
